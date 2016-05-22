@@ -1,0 +1,15 @@
+.screen {
+	background-color: rgb(108, 215, 148);
+	height: 100%;
+	width: 100%;
+}
+
+.screenTwo {
+	background-color: rgb(130, 193, 235);
+	height: 100%;
+	width: 100%;
+}
+
+.main {
+	height: 100vh;
+}

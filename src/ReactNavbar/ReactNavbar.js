@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import './style.css';
 
 class ReactNavbar extends React.Component {
@@ -11,7 +12,8 @@ class ReactNavbar extends React.Component {
 		super(props);
 		this.state = {
 			stack: [{
-				component: this.props.root
+				component: this.props.root,
+				animation: ''
 			}]
 		};
 	}
@@ -24,7 +26,8 @@ class ReactNavbar extends React.Component {
 		if (this.state.stack.length !== 1) {
 			this.state.stack.pop();
 			this.setState({
-				stack: this.state.stack
+				stack: this.state.stack,
+				animation: 'pop'
 			});
 		}
 	}
@@ -32,7 +35,8 @@ class ReactNavbar extends React.Component {
 	push(component) {
 		this.state.stack.push({component});
 		this.setState({
-			stack: this.state.stack
+			stack: this.state.stack,
+			animation: 'push'
 		});
 	}
 
@@ -54,12 +58,12 @@ class ReactNavbar extends React.Component {
 
 	renderComponent() {
 		const Component = this.getCurrent().component;
-		return (<Component ReactNavbar={this} />);
+		return (<Component key={this.state.stack.length-1} ReactNavbar={this} />);
 	}
 
 	render() {
 		return (
-			<div>
+			<div className="reactNavbar">
 				<div className="reactNavbar-container">
 					<div className="reactNavbar-left" onClick={this.leftClicked.bind(this)}>
 						{this.renderLeftItem()}
@@ -71,7 +75,13 @@ class ReactNavbar extends React.Component {
 						{this.renderRightItem()}
 					</div>
 				</div>
-				{this.renderComponent()}
+				<ReactCSSTransitionGroup
+					transitionName={`reactNavbar-transition-${this.state.animation}`}
+					transitionEnterTimeout={500}
+					transitionLeaveTimeout={500}
+				>
+					{this.renderComponent()}
+				</ReactCSSTransitionGroup>
 			</div>
 		);
 	}

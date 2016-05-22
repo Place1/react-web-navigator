@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
+import './style.css'
 
 class Seccond extends React.Component {
 
@@ -13,7 +14,7 @@ class Seccond extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className="screenTwo">
 				Seccond
 			</div>
 		);
