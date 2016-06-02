@@ -41,7 +41,7 @@ class ReactNavbar extends React.Component {
 	}
 
 	renderLeftItem() {
-		return this.getCurrent().leftItem || (<button>{'<'}</button>);
+		return this.getCurrent().leftItem || (<button onClick={this.leftClicked.bind(this)}>{'<'}</button>);
 	}
 
 	renderMiddleItem() {
@@ -65,7 +65,7 @@ class ReactNavbar extends React.Component {
 		return (
 			<div className="reactNavbar">
 				<div className="reactNavbar-container">
-					<div className="reactNavbar-left" onClick={this.leftClicked.bind(this)}>
+					<div className="reactNavbar-left">
 						{this.renderLeftItem()}
 					</div>
 					<div className="reactNavbar-middle">
