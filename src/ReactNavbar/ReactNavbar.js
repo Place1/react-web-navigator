@@ -5,20 +5,33 @@ import './style.css';
 class ReactNavbar extends React.Component {
 
 	static propTypes = {
-		root: PropTypes.func.isRequired,
+		root: PropTypes.func,
+		children: PropTypes.node,
 	}
 
 	constructor(props) {
 		super(props);
+		let stack = []
+		if (this.props.root) {
+			stack.push({
+				component: this.props.root
+			});
+		}
+		if (this.props.children) {
+			stack.push({
+				component: this.props.children
+			});
+		}
 		this.state = {
-			stack: [{
-				component: this.props.root,
-				animation: ''
-			}]
+			stack: stack,
+			animation: ''
 		};
 	}
 
 	getCurrent() {
+		if (this.state.stack.length == 0) {
+			return {}
+		}
 		return this.state.stack[this.state.stack.length - 1];
 	}
 
@@ -58,7 +71,16 @@ class ReactNavbar extends React.Component {
 
 	renderComponent() {
 		const Component = this.getCurrent().component;
-		return (<Component key={this.state.stack.length-1} ReactNavbar={this} />);
+		if (!Component) {
+			return null;
+		}
+		let components = React.Children.map(Component, child => {
+			return React.cloneElement(child, {
+				ReactNavbar:this,
+				key: this.state.stack.length-1
+			});
+		});
+		return components
 	}
 
 	render() {

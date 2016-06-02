@@ -6,7 +6,7 @@ import './style.css'
 class First extends React.Component {
 
 	static propTypes = {
-		ReactNavbar: PropTypes.object.isRequired
+		ReactNavbar: PropTypes.object
 	}
 
 	constructor(props) {
@@ -14,7 +14,7 @@ class First extends React.Component {
 	}
 
 	btnClicked() {
-		this.props.ReactNavbar.push(Seccond);
+		this.props.ReactNavbar.push(<Seccond />);
 	}
 
 	render() {
@@ -22,6 +22,8 @@ class First extends React.Component {
 			<div className="screen">
 				First
 				<button onClick={this.btnClicked.bind(this)}>Go to seccond</button>
+				<br/>
+				<Link to="/seccond/">link to seccond</Link>
 			</div>
 		);
 	}

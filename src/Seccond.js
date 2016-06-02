@@ -5,7 +5,7 @@ import './style.css'
 class Seccond extends React.Component {
 
 	static propTypes = {
-		ReactNavbar: PropTypes.object.isRequired,
+		ReactNavbar: PropTypes.object,
 	}
 
 	constructor(props) {
