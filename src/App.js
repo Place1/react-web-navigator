@@ -6,26 +6,17 @@ import First from './First.js';
 import Seccond from './Seccond.js';
 
 class App extends React.Component {
-	static PropTypes = {
-		children: PropTypes.node.isRequired,
-	}
-
 	render() {
 		return (
 			<div className="main">
-				<ReactNavbar>
-					{this.props.children}
-				</ReactNavbar>
+				<ReactNavbar
+					title="first view"
+					root={First}
+					props={null}
+				/>
 			</div>
 		);
 	}
 }
 
-ReactDOM.render((
-	<Router history={hashHistory}>
-		<Route path="/" component={App}>
-			<IndexRoute component={First} />
-			<Route path="seccond" component={Seccond} />
-		</Route>
-	</Router>
-), document.getElementById('App'));
+ReactDOM.render(<App />, document.getElementById('App'));

@@ -1,30 +1,35 @@
 import React, { PropTypes } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import './style.css';
+import './style.scss';
 
 class ReactNavbar extends React.Component {
 
 	static propTypes = {
-		root: PropTypes.func,
-		children: PropTypes.node,
+		title: PropTypes.string,
+		root: PropTypes.func.isRequired,
+		props: PropTypes.object,
+	}
+
+	static Animations = {
+		push: 'push',
+		pop: 'pop'
 	}
 
 	constructor(props) {
 		super(props);
+		this.setInitialState(props);
+	}
+
+	setInitialState(props) {
 		let stack = []
-		if (this.props.root) {
+		if (props.root) {
 			stack.push({
-				component: this.props.root
-			});
-		}
-		if (this.props.children) {
-			stack.push({
-				component: this.props.children
+				component: props.root
 			});
 		}
 		this.state = {
 			stack: stack,
-			animation: ''
+			animation: props.animation
 		};
 	}
 
@@ -35,22 +40,22 @@ class ReactNavbar extends React.Component {
 		return this.state.stack[this.state.stack.length - 1];
 	}
 
-	pop() {
-		if (this.state.stack.length !== 1) {
+	push(component, title = '', animation = ReactNavbar.Animations.push) {
+		this.state.stack.push({component, title});
+		this.setState({
+			stack: this.state.stack,
+			animation: animation
+		});
+	}
+
+	pop(animation = ReactNavbar.Animations.pop) {
+		if (this.state.stack.length > 0) {
 			this.state.stack.pop();
 			this.setState({
 				stack: this.state.stack,
-				animation: 'pop'
+				animation: animation
 			});
 		}
-	}
-
-	push(component) {
-		this.state.stack.push({component});
-		this.setState({
-			stack: this.state.stack,
-			animation: 'push'
-		});
 	}
 
 	renderLeftItem() {
@@ -58,15 +63,19 @@ class ReactNavbar extends React.Component {
 	}
 
 	renderMiddleItem() {
-		return this.getCurrent().middleItem || (<span>title</span>);
+		return this.getCurrent().middleItem || (<span>{this.getCurrent().title}</span>);
 	}
 
 	renderRightItem() {
-		return this.getCurrent().rightItem || (<button>{'#'}</button>);
+		return this.getCurrent().rightItem || (<button onClick={this.rightClicked.bind(this)}>{'#'}</button>);
 	}
 
 	leftClicked() {
 		this.pop();
+	}
+
+	rightClicked() {
+		// no default action
 	}
 
 	renderComponent() {
