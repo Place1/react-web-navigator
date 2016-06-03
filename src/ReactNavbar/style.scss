@@ -1,26 +1,29 @@
+/* general styles */
 .reactNavbar {
-	height: 100%;
+
+	&-container {
+		height: 50px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-bottom: solid 1px rgb(222, 222, 222);
+	}
+
+	&-left {
+
+	}
+
+	&-middle {
+
+	}
+
+	&-right {
+
+	}
+
 }
 
-.reactNavbar-container {
-	height: 50px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	border-bottom: solid 1px rgb(222, 222, 222);
-}
 
-.reactNavbar-left {
-
-}
-
-.reactNavbar-middle {
-
-}
-
-.reactNavbar-right {
-
-}
 
 /* animations */
 

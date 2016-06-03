@@ -1,13 +1,17 @@
+h2 {
+	margin: 0px;
+}
+
 .screen {
 	background-color: rgb(108, 215, 148);
-	height: 100%;
-	width: 100%;
+	height: calc(100vh - 50px);
+	width: 100vw;
 }
 
 .screenTwo {
 	background-color: rgb(130, 193, 235);
-	height: 100%;
-	width: 100%;
+	height: calc(100vh - 50px);
+	width: 100vw;
 }
 
 .main {

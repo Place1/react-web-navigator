@@ -5,9 +5,8 @@ import './style.scss';
 class ReactNavbar extends React.Component {
 
 	static propTypes = {
-		title: PropTypes.string,
 		root: PropTypes.func.isRequired,
-		props: PropTypes.object,
+		title: PropTypes.string
 	}
 
 	static Animations = {
@@ -24,7 +23,8 @@ class ReactNavbar extends React.Component {
 		let stack = []
 		if (props.root) {
 			stack.push({
-				component: props.root
+				component: props.root,
+				title: props.title
 			});
 		}
 		this.state = {
@@ -58,6 +58,14 @@ class ReactNavbar extends React.Component {
 		}
 	}
 
+	leftClicked() {
+		this.pop();
+	}
+
+	rightClicked() {
+		// no default action
+	}
+
 	renderLeftItem() {
 		return this.getCurrent().leftItem || (<button onClick={this.leftClicked.bind(this)}>{'<'}</button>);
 	}
@@ -70,26 +78,19 @@ class ReactNavbar extends React.Component {
 		return this.getCurrent().rightItem || (<button onClick={this.rightClicked.bind(this)}>{'#'}</button>);
 	}
 
-	leftClicked() {
-		this.pop();
-	}
-
-	rightClicked() {
-		// no default action
-	}
-
 	renderComponent() {
-		const Component = this.getCurrent().component;
+		const current = this.getCurrent();
+		const Component = current.component;
 		if (!Component) {
 			return null;
 		}
-		let components = React.Children.map(Component, child => {
-			return React.cloneElement(child, {
-				ReactNavbar:this,
-				key: this.state.stack.length-1
-			});
-		});
-		return components
+		return (
+			<Component
+				ReactNavbar={this}
+				key={this.state.stack.length}
+				{...current.props}
+			/>
+		);
 	}
 
 	render() {
