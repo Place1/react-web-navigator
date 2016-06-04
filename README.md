@@ -1,7 +1,8 @@
-#ReactJS frontend project boilerplate
+# react-web-navigator
 
-###Usage:
+Demo: http://place1.github.io/react-web-navigator/
+
+## setup:
 
 	npm install # install dependancies
-
-	./node_modules/.bin/webpack-dev-server # run the dev server.
+	npm run serve # run the dev server.
