@@ -17,6 +17,9 @@
 		"no-unused-vars": 2,
 		"camelcase": 2,
 		"indent": [2, "tab"],
+		"import/no-unresolved": [2, {
+			"ignore": ["^expose?.*!.*$"]
+		}],
 		"react/jsx-indent": [2, "tab"],
 		"react/jsx-indent-props": [2, "tab"],
 		"react/prefer-stateless-function": 0
