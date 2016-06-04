@@ -1,14 +1,15 @@
 import React, { PropTypes } from 'react';
 import Seccond from './Seccond';
-import './style.css'
+import './style.css';
 class First extends React.Component {
 
 	static propTypes = {
-		ReactNavbar: PropTypes.object
+		ReactNavbar: PropTypes.object,
 	}
 
 	constructor(props) {
 		super(props);
+		this.btnClicked = this.btnClicked.bind(this);
 	}
 
 	btnClicked() {
@@ -19,10 +20,10 @@ class First extends React.Component {
 		return (
 			<div className="screen">
 				<h2>First</h2>
-				<br/>
+				<br />
 				<button
 					className="btn btn-default"
-					onClick={this.btnClicked.bind(this)}
+					onClick={this.btnClicked}
 				>
 					Go to second
 				</button>
@@ -31,4 +32,4 @@ class First extends React.Component {
 	}
 }
 
-export default First
+export default First;
