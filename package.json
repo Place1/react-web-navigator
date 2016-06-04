@@ -9,6 +9,10 @@
     "serve": "webpack-dev-server",
     "lint": "eslint ./src"
   },
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Place1/react-web-navigator.git"
+	},
   "author": "James Batt",
   "license": "MIT",
   "devDependencies": {
