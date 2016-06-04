@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import Seccond from './Seccond';
 import './style.css'
-
 class First extends React.Component {
 
 	static propTypes = {
@@ -21,7 +20,12 @@ class First extends React.Component {
 			<div className="screen">
 				<h2>First</h2>
 				<br/>
-				<button onClick={this.btnClicked.bind(this)}>Go to second</button>
+				<button
+					className="btn btn-default"
+					onClick={this.btnClicked.bind(this)}
+				>
+					Go to second
+				</button>
 			</div>
 		);
 	}

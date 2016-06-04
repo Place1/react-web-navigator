@@ -1,3 +1,6 @@
+import 'expose?jQuery!jquery';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import ReactNavbar from './ReactNavbar';

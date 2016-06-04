@@ -49,7 +49,7 @@ class ReactNavbar extends React.Component {
 	}
 
 	pop(animation = ReactNavbar.Animations.pop) {
-		if (this.state.stack.length > 0) {
+		if (this.state.stack.length > 1) {
 			this.state.stack.pop();
 			this.setState({
 				stack: this.state.stack,
