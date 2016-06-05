@@ -1,3 +1,3 @@
-var ReactNavbar = require('lib/ReactNavbar');
+var ReactNavbar = require('./lib/ReactNavbar');
 
 module.exports = ReactNavbar;

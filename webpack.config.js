@@ -1,4 +1,5 @@
 const path = require('path');
+const webpackUMDExternal = require('webpack-umd-external');
 
 module.exports = {
 	entry: './src/ReactNavbar/index.js',
@@ -8,15 +9,16 @@ module.exports = {
 		path: path.resolve(__dirname, 'lib'),
 		filename: 'ReactNavbar.js'
 	},
-	externals: [{
-		react: 'React',
-		ReactCSSTransitionGroup: 'react-addons-css-transition-group'
-	}],
+	externals: webpackUMDExternal({
+		'react': 'react',
+		'react-dom': 'react-dom',
+		'react-addons-css-transition-group': 'react-addons-css-transition-group'
+	}),
 	module: {
 		loaders: [{
 			test: /\.jsx?$/,
 			loader: 'babel-loader',
-			exclude: /(node_modules|bower_components)/,
+			exclude: /node_modules/,
 			query: {
 				presets: ['es2015', 'react', 'stage-0']
 			}

@@ -18,7 +18,11 @@
 		"camelcase": 2,
 		"indent": [2, "tab"],
 		"import/no-unresolved": [2, {
-			"ignore": ["^expose?.*!.*$"]
+			"ignore": [
+				"^expose?.*!.*$",
+				"react",
+				"react-addons-css-transition-group"
+			]
 		}],
 		"react/jsx-indent": [2, "tab"],
 		"react/jsx-indent-props": [2, "tab"],

@@ -1,5 +1,5 @@
 {
-  "name": "react_js_boilerplate",
+  "name": "react-web-navigator",
   "version": "1.0.0",
   "description": "react_js_boilerplate",
   "main": "src/App.js",
@@ -30,9 +30,12 @@
     "eslint-plugin-react": "^5.0.1",
     "node-sass": "^3.7.0",
     "path": "^0.12.7",
+    "react": "^15.1.0",
+    "react-addons-css-transition-group": "^15.1.0",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
+    "webpack-umd-external": "^1.0.2"
   },
   "peerDependencies": {
     "react": "^15.1.0",
