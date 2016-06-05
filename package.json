@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch",
-    "lint": "eslint ./src"
+    "lint": "eslint ./src",
+    "prepublish": "npm run lint && npm run build"
   },
   "repository": {
     "type": "git",
@@ -34,7 +35,7 @@
     "webpack": "^1.13.1"
   },
   "peerDependencies": {
-		"react": "^15.1.0",
+    "react": "^15.1.0",
     "react-addons-css-transition-group": "^15.1.0"
   }
 }
