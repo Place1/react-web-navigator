@@ -1,6 +1,6 @@
 # react-web-navigator
 
-Demo: http://place1.github.io/react-web-navigator/
+Demo: http://place1.github.io/react-web-navigator-demo/
 
 ## setup:
 
